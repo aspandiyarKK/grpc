@@ -1,0 +1,23 @@
+syntax = "proto3";
+package proto;
+option go_package = "./proto";
+service Xr{
+  rpc GetCurrentRate(CurrRequest) returns (Response) ;
+  rpc Convert(ConvertRequest) returns (Response);
+  rpc GetHistoricalRate(HistoricalRequest) returns (Response);
+}
+message ConvertRequest{
+  int32 sum = 1;
+  string from = 2;
+  string to = 3;
+}
+message CurrRequest{
+  string curr = 1;
+}
+message Response{
+  float res = 1;
+}
+message HistoricalRequest{
+  string cur = 1;
+  string data = 2;
+}
